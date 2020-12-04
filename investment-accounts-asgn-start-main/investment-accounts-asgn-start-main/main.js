@@ -121,10 +121,10 @@ function investmentStats() {
   // Output the minimum account amount, the maximum account amount
   // and the average account amount.
   let total = 0;
-for(var i = 0; i < accounts.length; i++) {
+  for (var i = 0; i < accounts.length; i++) {
     total += accounts[i];
-}
-let avg = total / accounts.length;
+  }
+  let avg = total / accounts.length;
 
   outputEl.innerHTML = avg
   maxOut.innerHTML = Math.max(...accounts);
@@ -152,14 +152,14 @@ function removeLow() {
   let count = 0;
 
   for (let i = 0; i < accounts.length; i++) {
-    while(accounts [i] < 500) {
-      accounts.splice(i,1)
+    while (accounts[i] < 500) {
+      accounts.splice(i, 1)
       count++
-      
+
     }
   }
   outputEl.innerHTML = count
- 
+
 }
 
 
@@ -176,29 +176,40 @@ function robinHood() {
   let count = 0;
   let total = 0;
 
-  for(var i = 0; i < accounts.length; i++) {
-     total += accounts[i];
+  for (var i = 0; i < accounts.length; i++) {
+    total += accounts[i];
 
     if (accounts[i] > 4000) {
 
 
 
       accounts[i] -= 400;
-      
+      var tot = accounts[i]
+
+      // accounts[i] < 1000
+      //   let amount = tot / accounts.length ;
+      //   accounts[i] += amount
+      //   count++
+
 
     } else if (accounts[i] < 1000) {
-      let avg = total / accounts.length;
-      outputEl.innerHTML = avg
-      count++
+      let amount = tot / accounts.length;
+      accounts[i] += amount;
+      count = amount;
+      total++
+
+
+    } else {
       
     }
-    
-    }
-    outputEl.innerHTML = count
 
 
-    
   }
+
+  outputEl.innerHTML = count
+  output2.innerHTML = total
+}
+
 
 
 
