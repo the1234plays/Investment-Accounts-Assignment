@@ -9,6 +9,7 @@ let maxOut = document.getElementById("output2");
 let minOut = document.getElementById("output3");
 
 // Global Variable
+
 let accounts = [];
 for (let n = 1; n <= 200; n++) {
   accounts.push(Math.random() * 5000)
@@ -173,46 +174,36 @@ function robinHood() {
 
   outputEl.innerHTML = "Robin Hood";
 
-  let count = 0;
-  let total = 0;
+  let stolenAmount = 0;
 
-  for (var i = 0; i < accounts.length; i++) {
-    total += accounts[i];
+  let poorPeople = 0;
 
+
+  for (let i = 0; i < accounts.length; i++) {
     if (accounts[i] > 4000) {
-
-
-
       accounts[i] -= 400;
-      var tot = accounts[i]
+      stolenAmount += 400;
 
-      // accounts[i] < 1000
-      //   let amount = tot / accounts.length ;
-      //   accounts[i] += amount
-      //   count++
-
+    
 
     } else if (accounts[i] < 1000) {
-      let amount = tot / accounts.length;
-      accounts[i] += amount;
-      count = amount;
-      total++
+      poorPeople++
 
 
-    } else {
-      
     }
-
-
   }
 
-  outputEl.innerHTML = count
-  output2.innerHTML = total
+    let amountperPerson =  stolenAmount / poorPeople
+
+    for (let i = 0; i < accounts.length; i++) {
+    
+    if (accounts[i] < 1000) {
+      accounts[i] += amountperPerson;
+      
+
+    }  
+
+  }
+  outputEl.innerHTML = poorPeople
+  output2.innerHTML = amountperPerson
 }
-
-
-
-
-
-
-
